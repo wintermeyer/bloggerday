@@ -13,7 +13,7 @@ defmodule BloggerdayWeb.UserResetPasswordControllerTest do
     test "renders the reset password page", %{conn: conn} do
       conn = get(conn, Routes.user_reset_password_path(conn, :new))
       response = html_response(conn, 200)
-      assert response =~ "<h1>Forgot your password?</h1>"
+      assert response =~ "Passwort zurücksetzen"
     end
   end
 
@@ -26,7 +26,7 @@ defmodule BloggerdayWeb.UserResetPasswordControllerTest do
         })
 
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) =~ "If your email is in our system"
+      assert get_flash(conn, :info) =~ "Wenn Ihre E-Mail Adresse in unserem System gespeichert ist, bekommen Sie direkt einen Reset Link zugemailt."
       assert Repo.get_by!(Accounts.UserToken, user_id: user.id).context == "reset_password"
     end
 
@@ -37,7 +37,7 @@ defmodule BloggerdayWeb.UserResetPasswordControllerTest do
         })
 
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) =~ "If your email is in our system"
+      assert get_flash(conn, :info) =~ "Wenn Ihre E-Mail Adresse in unserem System gespeichert ist, bekommen Sie direkt einen Reset Link zugemailt."
       assert Repo.all(Accounts.UserToken) == []
     end
   end
@@ -54,7 +54,7 @@ defmodule BloggerdayWeb.UserResetPasswordControllerTest do
 
     test "renders reset password", %{conn: conn, token: token} do
       conn = get(conn, Routes.user_reset_password_path(conn, :edit, token))
-      assert html_response(conn, 200) =~ "<h1>Reset password</h1>"
+      assert html_response(conn, 200) =~ "Passwort zurücksetzen"
     end
 
     test "does not render reset password with invalid token", %{conn: conn} do
@@ -85,7 +85,7 @@ defmodule BloggerdayWeb.UserResetPasswordControllerTest do
 
       assert redirected_to(conn) == Routes.user_session_path(conn, :new)
       refute get_session(conn, :user_token)
-      assert get_flash(conn, :info) =~ "Password reset successfully"
+      assert get_flash(conn, :info) =~ "Passswort wurde zurückgesetzt."
       assert Accounts.get_user_by_email_and_password(user.email, "new valid password")
     end
 
@@ -99,8 +99,8 @@ defmodule BloggerdayWeb.UserResetPasswordControllerTest do
         })
 
       response = html_response(conn, 200)
-      assert response =~ "<h1>Reset password</h1>"
-      assert response =~ "should be at least 12 character(s)"
+      assert response =~ "Passwort zurücksetzen"
+      assert response =~ "muss mindestens aus 10 Zeichen bestehen"
       assert response =~ "does not match password"
     end
 

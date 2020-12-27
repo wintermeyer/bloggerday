@@ -11,9 +11,8 @@ defmodule BloggerdayWeb.UserSessionControllerTest do
     test "renders log in page", %{conn: conn} do
       conn = get(conn, Routes.user_session_path(conn, :new))
       response = html_response(conn, 200)
-      assert response =~ "<h1>Log in</h1>"
-      assert response =~ "Log in</a>"
-      assert response =~ "Register</a>"
+      assert response =~ "Log in"
+      assert response =~ "Anmelden"
     end
 
     test "redirects if already logged in", %{conn: conn, user: user} do
@@ -36,8 +35,8 @@ defmodule BloggerdayWeb.UserSessionControllerTest do
       conn = get(conn, "/")
       response = html_response(conn, 200)
       assert response =~ user.email
-      assert response =~ "Settings</a>"
-      assert response =~ "Log out</a>"
+      assert response =~ "Account Daten"
+      assert response =~ "Abmelden"
     end
 
     test "logs the user in with remember me", %{conn: conn, user: user} do
@@ -75,8 +74,8 @@ defmodule BloggerdayWeb.UserSessionControllerTest do
         })
 
       response = html_response(conn, 200)
-      assert response =~ "<h1>Log in</h1>"
-      assert response =~ "Invalid email or password"
+      assert response =~ "Log in"
+      assert response =~ "Ungültige E-Mail Adresse oder Passwort."
     end
   end
 
@@ -85,14 +84,14 @@ defmodule BloggerdayWeb.UserSessionControllerTest do
       conn = conn |> log_in_user(user) |> delete(Routes.user_session_path(conn, :delete))
       assert redirected_to(conn) == "/"
       refute get_session(conn, :user_token)
-      assert get_flash(conn, :info) =~ "Logged out successfully"
+      assert get_flash(conn, :info) =~ "Sie sind abgemeldet."
     end
 
     test "succeeds even if the user is not logged in", %{conn: conn} do
       conn = delete(conn, Routes.user_session_path(conn, :delete))
       assert redirected_to(conn) == "/"
       refute get_session(conn, :user_token)
-      assert get_flash(conn, :info) =~ "Logged out successfully"
+      assert get_flash(conn, :info) =~ "Sie sind abgemeldet."
     end
   end
 end
