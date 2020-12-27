@@ -17,6 +17,8 @@ import {Socket} from "phoenix"
 import NProgress from "nprogress"
 import {LiveSocket} from "phoenix_live_view"
 
+let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
+
 // Alpinejs
 import Alpine from "alpinejs"
 let liveSocket = new LiveSocket("/live", Socket, {
