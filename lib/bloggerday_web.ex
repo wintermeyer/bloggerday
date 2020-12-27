@@ -39,6 +39,8 @@ defmodule BloggerdayWeb do
 
       # Include shared imports and aliases for views
       unquote(view_helpers())
+
+      import BloggerdayWeb.TailwindHelper
     end
   end
 
