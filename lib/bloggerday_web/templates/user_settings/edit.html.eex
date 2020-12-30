@@ -106,14 +106,6 @@
           </div>
 
           <div class="sm:col-span-4">
-            <label for="current_password_for_email" class="block text-sm font-medium text-gray-700">
-              Wiederholung des neuen Passwortes
-            </label>
-            <%= password_input f, :password_confirmation, required: true, name: "password_confirmation", id: "password_confirmation_for_password", class: "flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300" %>
-            <%= tailwind_error_tag f, :password_confirmation %>
-          </div>
-
-          <div class="sm:col-span-4">
             <label for="current_password" class="block text-sm font-medium text-gray-700">
               Altes (noch aktuelles) Passwortes
             </label>

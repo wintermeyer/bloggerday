@@ -93,15 +93,13 @@ defmodule BloggerdayWeb.UserResetPasswordControllerTest do
       conn =
         put(conn, Routes.user_reset_password_path(conn, :update, token), %{
           "user" => %{
-            "password" => "too short",
-            "password_confirmation" => "does not match"
+            "password" => "too short"
           }
         })
 
       response = html_response(conn, 200)
       assert response =~ "Passwort zurücksetzen"
       assert response =~ "muss mindestens aus 10 Zeichen bestehen"
-      assert response =~ "does not match password"
     end
 
     test "does not reset password with invalid token", %{conn: conn} do
