@@ -85,7 +85,7 @@ defmodule Bloggerday.AccountsTest do
 
     test "registers users with a hashed password" do
       email = unique_user_email()
-      {:ok, user} = Accounts.register_user(%{email: email, password: valid_user_password()})
+      {:ok, user} = Accounts.register_user(%{email: email, password: valid_user_password(), first_name: "Horst", last_name: "Beispiel", gender: "Herr"})
       assert user.email == email
       assert is_binary(user.hashed_password)
       assert is_nil(user.confirmed_at)
@@ -104,7 +104,7 @@ defmodule Bloggerday.AccountsTest do
       password = valid_user_password()
 
       changeset =
-        Accounts.change_user_registration(%User{}, %{"email" => email, "password" => password})
+        Accounts.change_user_registration(%User{first_name: "Horst", last_name: "Beispiel", gender: "Herr"}, %{"email" => email, "password" => password})
 
       assert changeset.valid?
       assert get_change(changeset, :email) == email
