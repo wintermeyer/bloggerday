@@ -20,7 +20,7 @@ defmodule BloggerdayWeb.UserRegistrationController do
           )
 
         conn
-        |> put_flash(:info, "Account angelegt. Verifizierungslink per E-Mail an #{user.email} geschickt.")
+        |> put_flash(:info, "Ein Verifizierungslink wurde per E-Mail an #{user.email} geschickt.")
         # |> UserAuth.log_in_user(user)
         |> UserAuth.log_out_user()
 

@@ -4,6 +4,9 @@ defmodule Bloggerday.Accounts.User do
 
   @derive {Inspect, except: [:password]}
   schema "users" do
+    field :gender, :string
+    field :first_name, :string
+    field :last_name, :string
     field :email, :string
     field :password, :string, virtual: true
     field :hashed_password, :string
@@ -31,8 +34,9 @@ defmodule Bloggerday.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password])
+    |> cast(attrs, [:email, :password, :gender, :first_name, :last_name])
     |> validate_email()
+    |> validate_required([:email, :first_name, :last_name, :gender])
     |> validate_password(opts)
   end
 

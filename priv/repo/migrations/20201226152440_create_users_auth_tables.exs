@@ -6,6 +6,9 @@ defmodule Bloggerday.Repo.Migrations.CreateUsersAuthTables do
 
     create table(:users) do
       add :email, :citext, null: false
+      add :gender, :citext, null: false
+      add :first_name, :citext, null: false
+      add :last_name, :citext, null: false
       add :hashed_password, :string, null: false
       add :confirmed_at, :naive_datetime
       timestamps()

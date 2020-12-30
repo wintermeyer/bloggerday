@@ -12,7 +12,10 @@ defmodule Bloggerday.AccountsFixtures do
       attrs
       |> Enum.into(%{
         email: unique_user_email(),
-        password: valid_user_password()
+        password: valid_user_password(),
+        first_name: "Horst",
+        last_name: "Beispiel",
+        gender: "Herr"
       })
       |> Bloggerday.Accounts.register_user()
 
