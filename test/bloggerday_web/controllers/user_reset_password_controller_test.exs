@@ -26,7 +26,10 @@ defmodule BloggerdayWeb.UserResetPasswordControllerTest do
         })
 
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) =~ "Wenn Ihre E-Mail Adresse in unserem System gespeichert ist, bekommen Sie direkt einen Reset Link zugemailt."
+
+      assert get_flash(conn, :info) =~
+               "Wenn Ihre E-Mail Adresse in unserem System gespeichert ist, bekommen Sie direkt einen Reset Link zugemailt."
+
       assert Repo.get_by!(Accounts.UserToken, user_id: user.id).context == "reset_password"
     end
 
@@ -37,7 +40,10 @@ defmodule BloggerdayWeb.UserResetPasswordControllerTest do
         })
 
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) =~ "Wenn Ihre E-Mail Adresse in unserem System gespeichert ist, bekommen Sie direkt einen Reset Link zugemailt."
+
+      assert get_flash(conn, :info) =~
+               "Wenn Ihre E-Mail Adresse in unserem System gespeichert ist, bekommen Sie direkt einen Reset Link zugemailt."
+
       assert Repo.all(Accounts.UserToken) == []
     end
   end

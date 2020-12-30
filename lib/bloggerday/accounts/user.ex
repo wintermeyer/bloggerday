@@ -43,7 +43,9 @@ defmodule Bloggerday.Accounts.User do
   defp validate_email(changeset) do
     changeset
     |> validate_required([:email])
-    |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/, message: "muss ein @-Zeichen und darf keine Leerzeichen enthalten")
+    |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/,
+      message: "muss ein @-Zeichen und darf keine Leerzeichen enthalten"
+    )
     |> validate_length(:email, max: 160)
     |> downcase_email
     |> unsafe_validate_unique(:email, Bloggerday.Repo)

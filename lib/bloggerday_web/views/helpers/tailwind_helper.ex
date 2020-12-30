@@ -12,7 +12,8 @@ defmodule BloggerdayWeb.TailwindHelper do
   end
 
   def gravatar_url(email) do
-    hash = email
+    hash =
+      email
       |> String.trim()
       |> String.downcase()
       |> :erlang.md5()
