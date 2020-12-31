@@ -17,22 +17,8 @@
       </div>
     <% end %>
     </dl>
+
+    <%%= button "Edit", to: Routes.<%= schema.route_helper %>_path(@conn, :edit, @<%= schema.singular %>), class: "inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+    <%%= button "Back", to: Routes.<%= schema.route_helper %>_path(@conn, :index), class: "inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
   </div>
 </div>
-
-
-
-
-<h1>Show <%= schema.human_singular %></h1>
-
-<ul>
-<%= for {k, _} <- schema.attrs do %>
-  <li>
-    <strong><%= Phoenix.Naming.humanize(Atom.to_string(k)) %>:</strong>
-    <%%= @<%= schema.singular %>.<%= k %> %>
-  </li>
-<% end %>
-</ul>
-
-<span><%%= link "Edit", to: Routes.<%= schema.route_helper %>_path(@conn, :edit, @<%= schema.singular %>) %></span>
-<span><%%= link "Back", to: Routes.<%= schema.route_helper %>_path(@conn, :index) %></span>
