@@ -1,26 +1,49 @@
-<h1>Listing <%= schema.human_plural %></h1>
+<div class="px-4 py-5 sm:px-6">
+  <h3 class="text-lg leading-6 font-medium text-gray-900">
+    Listing <%= schema.human_plural %>
+  </h3>
+</div>
 
-<table>
-  <thead>
-    <tr>
-<%= for {k, _} <- schema.attrs do %>      <th><%= Phoenix.Naming.humanize(Atom.to_string(k)) %></th>
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="flex flex-col">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+            <%= for {k, _} <- schema.attrs do %>      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><%= Phoenix.Naming.humanize(Atom.to_string(k)) %></th>
 <% end %>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+              <th scope="col" class="relative px-6 py-3">
+                <span class="sr-only">Edit</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
 <%%= for <%= schema.singular %> <- @<%= schema.plural %> do %>
     <tr>
-<%= for {k, _} <- schema.attrs do %>      <td><%%= <%= schema.singular %>.<%= k %> %></td>
+<%= for {k, _} <- schema.attrs do %>      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%%= <%= schema.singular %>.<%= k %> %></td>
 <% end %>
-      <td>
-        <span><%%= link "Show", to: Routes.<%= schema.route_helper %>_path(@conn, :show, <%= schema.singular %>) %></span>
-        <span><%%= link "Edit", to: Routes.<%= schema.route_helper %>_path(@conn, :edit, <%= schema.singular %>) %></span>
-        <span><%%= link "Delete", to: Routes.<%= schema.route_helper %>_path(@conn, :delete, <%= schema.singular %>), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+        <%%= link "Show", to: Routes.<%= schema.route_helper %>_path(@conn, :show, <%= schema.singular %>), class: "text-indigo-600 hover:text-indigo-900" %>
+        <%%= link "Edit", to: Routes.<%= schema.route_helper %>_path(@conn, :edit, <%= schema.singular %>), class: "text-indigo-600 hover:text-indigo-900" %>
+        <%%= link "Delete", to: Routes.<%= schema.route_helper %>_path(@conn, :delete, <%= schema.singular %>), method: :delete, data: [confirm: "Are you sure?"], class: "text-indigo-600 hover:text-indigo-900" %>
       </td>
     </tr>
 <%% end %>
-  </tbody>
-</table>
 
-<span><%%= link "New <%= schema.human_singular %>", to: Routes.<%= schema.route_helper %>_path(@conn, :new) %></span>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pt-4">
+  <%%= link to: Routes.<%= schema.route_helper %>_path(@conn, :new), class: "inline-flex items-center px-5 mr-2 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" do %>
+    <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+    </svg>
+    New <%= schema.human_singular %>
+  <%% end %>
+</div>
