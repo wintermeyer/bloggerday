@@ -1,6 +1,6 @@
 <div class="px-4 py-5 sm:px-6">
   <h3 class="text-lg leading-6 font-medium text-gray-900">
-    New <%= schema.human_singular %>
+    <%%= gettext "New %{name}", name: "<%= schema.human_singular %>" %>
   </h3>
 </div>
 

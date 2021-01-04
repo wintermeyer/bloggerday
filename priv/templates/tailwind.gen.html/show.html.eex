@@ -1,7 +1,7 @@
 <div class="bg-white shadow overflow-hidden sm:rounded-lg">
   <div class="px-4 py-5 sm:px-6">
     <h3 class="text-lg leading-6 font-medium text-gray-900">
-      Show <%= schema.human_singular %>
+      <%%= gettext "Show %{name}", name: "<%= schema.human_singular %>" %>
     </h3>
   </div>
   <div class="border-t border-gray-200">
@@ -28,7 +28,7 @@
         <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
       </svg>
     </span>
-    Edit
+    <%%= gettext "Edit" %>
   <%% end %>
 
   <%%= link to: Routes.<%= schema.route_helper %>_path(@conn, :index), class: "inline-flex items-center px-5 mr-2 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" do %>
@@ -37,6 +37,6 @@
         <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
       </svg>
     </span>
-    Back
+    <%%= gettext "Back" %>
   <%% end %>
 </div>
