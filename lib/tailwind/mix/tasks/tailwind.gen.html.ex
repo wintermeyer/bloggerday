@@ -166,37 +166,37 @@ defmodule Mix.Tasks.Tailwind.Gen.Html do
       {_, {:references, _}} ->
         {nil, nil, nil}
       {key, :integer} ->
-        {label(key), ~s(<%= number_input f, #{inspect(key)} %>), error(key)}
+        {label(key), ~s(<%= number_input f, #{inspect(key)}, class: "max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" %>), error(key)}
       {key, :float} ->
-        {label(key), ~s(<%= number_input f, #{inspect(key)}, step: "any" %>), error(key)}
+        {label(key), ~s(<%= number_input f, #{inspect(key)}, step: "any", class: "max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" %>), error(key)}
       {key, :decimal} ->
-        {label(key), ~s(<%= number_input f, #{inspect(key)}, step: "any" %>), error(key)}
+        {label(key), ~s(<%= number_input f, #{inspect(key)}, step: "any", class: "max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" %>), error(key)}
       {key, :boolean} ->
-        {label(key), ~s(<%= checkbox f, #{inspect(key)} %>), error(key)}
+        {label(key), ~s(<%= checkbox f, #{inspect(key)}, class: "max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" %>), error(key)}
       {key, :text} ->
-        {label(key), ~s(<%= textarea f, #{inspect(key)} %>), error(key)}
+        {label(key), ~s(<%= textarea f, #{inspect(key)}, class: "max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" %>), error(key)}
       {key, :date} ->
-        {label(key), ~s(<%= date_select f, #{inspect(key)} %>), error(key)}
+        {label(key), ~s(<%= date_select f, #{inspect(key)}, class: "max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" %>), error(key)}
       {key, :time} ->
-        {label(key), ~s(<%= time_select f, #{inspect(key)} %>), error(key)}
+        {label(key), ~s(<%= time_select f, #{inspect(key)}, class: "max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" %>), error(key)}
       {key, :utc_datetime} ->
-        {label(key), ~s(<%= datetime_select f, #{inspect(key)} %>), error(key)}
+        {label(key), ~s(<%= datetime_select f, #{inspect(key)}, class: "max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" %>), error(key)}
       {key, :naive_datetime} ->
-        {label(key), ~s(<%= datetime_select f, #{inspect(key)} %>), error(key)}
+        {label(key), ~s(<%= datetime_select f, #{inspect(key)}, class: "max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" %>), error(key)}
       {key, {:array, :integer}} ->
-        {label(key), ~s(<%= multiple_select f, #{inspect(key)}, ["1": 1, "2": 2] %>), error(key)}
+        {label(key), ~s(<%= multiple_select f, #{inspect(key)}, ["1": 1, "2": 2], class: "max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" %>), error(key)}
       {key, {:array, _}} ->
         {label(key), ~s(<%= multiple_select f, #{inspect(key)}, ["Option 1": "option1", "Option 2": "option2"] %>), error(key)}
       {key, _}  ->
-        {label(key), ~s(<%= text_input f, #{inspect(key)} %>), error(key)}
+        {label(key), ~s(<%= text_input f, #{inspect(key)}, class: "max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" %>), error(key)}
     end)
   end
 
   defp label(key) do
-    ~s(<%= label f, #{inspect(key)} %>)
+    ~s(<%= label f, #{inspect(key)}, class: "block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2" %>)
   end
 
   defp error(field) do
-    ~s(<%= error_tag f, #{inspect(field)} %>)
+    ~s(<%= error_tag f, #{inspect(field)}, class: "mt-2 text-sm text-red-500" %>)
   end
 end
