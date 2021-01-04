@@ -42,7 +42,7 @@
             </svg>
           </span>
           Save
-        <% end %>
+        <%% end %>
       </div>
     </div>
   </div>
