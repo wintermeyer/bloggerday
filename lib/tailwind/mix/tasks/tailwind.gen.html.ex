@@ -197,6 +197,6 @@ defmodule Mix.Tasks.Tailwind.Gen.Html do
   end
 
   defp error(field) do
-    ~s(<%= error_tag f, #{inspect(field)} %>)
+    ~s(<%= tailwind_error_tag f, #{inspect(field)} %>)
   end
 end
