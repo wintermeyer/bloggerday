@@ -1,15 +1,21 @@
-<%%= form_for @changeset, @action, [class: "space-y-8 divide-y divide-gray-200"], fn f -> %>
+<%%= form_for @changeset, @action, [class: ""], fn f -> %>
   <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
 
     <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-      <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">
-          <%%= @title %>
-        </h3>
-        <p class="mt-1 max-w-2xl text-sm text-gray-500">
-          Use a permanent address where you can receive mail.
-        </p>
-      </div>
+      <%% if assigns[:title] || assigns[:subtitle] %>
+        <div>
+          <%% if assigns[:title] %>
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              <%%= assigns[:title] %>
+            </h3>
+          <%% end %>
+          <%% if assigns[:subtitle] %>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500">
+              <%%= assigns[:subtitle]  %>
+            </p>
+          <%% end %>
+        </div>
+      <%% end %>
 
       <%%= if @changeset.action do %>
         <div class="alert alert-danger">
