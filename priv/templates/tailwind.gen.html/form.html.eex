@@ -4,12 +4,12 @@
     <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
       <%% if assigns[:title] || assigns[:subtitle] %>
         <div>
-          <%% if assigns[:title] %>
+          <%% if assigns[:title] do %>
             <h3 class="text-lg leading-6 font-medium text-gray-900">
               <%%= assigns[:title] %>
             </h3>
           <%% end %>
-          <%% if assigns[:subtitle] %>
+          <%% if assigns[:subtitle] do %>
             <p class="mt-1 max-w-2xl text-sm text-gray-500">
               <%%= assigns[:subtitle]  %>
             </p>
