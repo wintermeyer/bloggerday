@@ -2,20 +2,14 @@
   <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
 
     <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-      <%% if assigns[:title] || assigns[:subtitle] do %>
-        <div>
-          <%% if assigns[:title] do %>
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              <%%= assigns[:title] %>
-            </h3>
-          <%% end %>
-          <%% if assigns[:subtitle] do %>
-            <p class="mt-1 max-w-2xl text-sm text-gray-500">
-              <%%= assigns[:subtitle]  %>
-            </p>
-          <%% end %>
-        </div>
-      <%% end %>
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          <%%= assigns[:title] %>
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm text-gray-500">
+          <%%= assigns[:subtitle]  %>
+        </p>
+      </div>
 
       <%%= if @changeset.action do %>
         <div class="alert alert-danger">
