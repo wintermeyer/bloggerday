@@ -2,7 +2,7 @@
   <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
 
     <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-      <%% if assigns[:title] || assigns[:subtitle] %>
+      <%% if assigns[:title] || assigns[:subtitle] do %>
         <div>
           <%% if assigns[:title] do %>
             <h3 class="text-lg leading-6 font-medium text-gray-900">
