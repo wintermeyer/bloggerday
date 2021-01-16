@@ -1,4 +1,6 @@
-# Bloggerday
+# Vanilla Phoenix Project
+
+Create a vanilla version of a new Phoenix project which includes Tailwind CSS and user authentication.
 
 To start your Phoenix server:
 
